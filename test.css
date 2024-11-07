@@ -6,40 +6,93 @@
 
 body {
     font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #f0f8f5;
+    color: #444;
+    background: linear-gradient(135deg, #ffe7e7, #f3e9ff);
+    overflow-x: hidden;
     line-height: 1.6;
+    animation: fadeIn 1s ease-out;
 }
 
+/* Animation pour le chargement de la page */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Styles et animation pour le header */
 header {
-    background-color: #2e8b57;
+    background-color: #ff6f61;
     color: #fff;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
+    animation: slideDown 1s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 10px;
+    animation: bounceIn 1s ease;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
 }
 
 header p {
     font-size: 1.2rem;
+    opacity: 0;
+    animation: fadeInText 1.5s ease forwards;
 }
 
+@keyframes fadeInText {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Sections */
 .intro, .tips {
-    padding: 20px;
+    padding: 30px;
     max-width: 800px;
     margin: 20px auto;
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease forwards;
+}
+
+.intro {
+    animation-delay: 0.5s;
+}
+
+.tips {
+    animation-delay: 0.8s;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .intro h2, .tips h2 {
-    color: #2e8b57;
+    color: #ff6f61;
     font-size: 1.8rem;
     margin-bottom: 10px;
+    position: relative;
+    animation: slideInLeft 1s ease;
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
 }
 
 .tips ul {
@@ -49,14 +102,23 @@ header p {
 
 .tips li {
     margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeInText 1s ease forwards;
+    animation-delay: calc(0.8s + var(--delay) * 0.2s);
 }
 
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #2e8b57;
+    background-color: #ff6f61;
     color: #fff;
     position: fixed;
     width: 100%;
     bottom: 0;
+    animation: slideUp 1s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
